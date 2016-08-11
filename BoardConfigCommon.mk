@@ -43,7 +43,7 @@ TARGET_CPU_VARIANT := krait
 
 # Kernel
 BOARD_DTBTOOL_ARGS := --dt-tag "htc,project-id = <"
-BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 zcache
+BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 zcache androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -150,8 +150,8 @@ BOARD_SEPOLICY_DIRS += device/htc/a5-common/sepolicy
 # Hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS += \
-    device/htc/a5-common/cmhw \
-    hardware/cyanogen/cmhw
+device/htc/a5-common/cmhw \
+hardware/cyanogen/cmhw
 
 # inherit from the proprietary version
 -include vendor/htc/a5-common/BoardConfigVendor.mk
