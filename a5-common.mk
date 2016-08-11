@@ -71,6 +71,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     $(LOCAL_PATH)/configs/com.htc.software.market.xml:system/etc/permissions/com.htc.software.market.xml
 
+# Prebuilt DT
+PRODUCT_COPY_FILES += \
+$(LOCAL_PATH)/dt:dt
+
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
