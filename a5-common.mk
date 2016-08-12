@@ -73,7 +73,7 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt DT
 PRODUCT_COPY_FILES += \
-$(LOCAL_PATH)/dt:dt
+$(LOCAL_PATH)/dt.img:dt.img
 
 # Audio
 PRODUCT_PACKAGES += \
