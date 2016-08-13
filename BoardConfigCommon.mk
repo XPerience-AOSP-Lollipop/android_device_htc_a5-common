@@ -111,6 +111,9 @@ TARGET_NO_RPC := true
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
+# NFC 
+BOARD_NFC_CHIPSET := pn547
+
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_WLAN_DEVICE := qcwcn

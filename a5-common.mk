@@ -101,6 +101,10 @@ PRODUCT_PACKAGES += \
     Snap \
     libstlport
 
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
