@@ -21,5 +21,6 @@
     <feature name="com.htc.software.hdk2" />
     <feature name="com.htc.software.hdk3" />
     <feature name="com.htc.software.A5UL" />
+    <feature name="com.htc.software.A5CHL" />
     <feature name="com.htc.software.IHSense" />
 </permissions>
