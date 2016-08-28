@@ -53,6 +53,7 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02008000 -
 #TARGET_KERNEL_SOURCE := kernel/htc/msm8974
 #TARGET_KERNEL_CONFIG := cm_a5_defconfig
 TARGET_PREBUILT_KERNEL=device/htc/a5ul/zImage
+BOARD_CUSTOM_BOOTIMG_MK := $(VENDOR_PATH)/mkbootimg.mk
 
 # Enable dex-preoptimization to speed up first boot sequence
 ifeq ($(HOST_OS),linux)
@@ -140,6 +141,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Recovery
+TARGET_NOT_USE_GZIP_RECOVERY_RAMDISK := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
