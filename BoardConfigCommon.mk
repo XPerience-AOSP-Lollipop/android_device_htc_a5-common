@@ -149,6 +149,7 @@ BOARD_USES_MMCUTILS := true
 TARGET_RECOVERY_DEVICE_DIRS += device/htc/a5-common
 TARGET_RECOVERY_DEVICE_MODULES += chargeled
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_DENSITY := xhdpi
 
 # SELinux
 #include device/qcom/sepolicy/sepolicy.mk
