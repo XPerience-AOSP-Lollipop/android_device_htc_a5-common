@@ -75,9 +75,9 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Camera
 TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY := libcamera_parameters_ext
-#COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{"htc.camera.sensor.", AID_CAMERA, 0}, {"camera.4k2k.", AID_MEDIA, 0},'
 TARGET_USE_COMPAT_GRALLOC_ALIGN := true
 USE_DEVICE_SPECIFIC_CAMERA := true
+TARGET_NEEDS_TEXT_RELOCATIONS := true
 
 # Charge mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
@@ -144,8 +144,8 @@ TARGET_RECOVERY_DEVICE_MODULES += chargeled
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += device/htc/a5-common/sepolicy
+-include device/qcom/sepolicy/sepolicy.mk
+-BOARD_SEPOLICY_DIRS += device/htc/a5-common/sepolicy
 
 # Hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
