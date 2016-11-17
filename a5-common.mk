@@ -21,6 +21,10 @@ $(call inherit-product-if-exists, vendor/htc/a5-common/a5-common-vendor.mk)
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
 
+
+PRODUCT_PACKAGES += \
+    Gello
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -39,13 +43,13 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.power.rc \
     init.qcom.usb.rc \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    init.variant.rc
 
 # Qcom init scripts for /etc
 PRODUCT_PACKAGES += \
     init.qcom.bt.bluedroid.sh \
     init.qcom.bt.sh \
-    init.qcom.ril.sh
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -70,10 +74,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     $(LOCAL_PATH)/configs/com.htc.software.market.xml:system/etc/permissions/com.htc.software.market.xml
-
-# Prebuilt DT
-PRODUCT_COPY_FILES += \
-$(LOCAL_PATH)/dt.img:dt.img
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -100,10 +100,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     Snap \
     libstlport
-
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -194,8 +190,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     librmnetctl \
     libcnefeatureconfig \
-    libxml2 \
-    libshim_ril
+    libxml2 
 
 # Thermal
 PRODUCT_COPY_FILES += \
@@ -204,11 +199,15 @@ PRODUCT_COPY_FILES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory
+    com.android.future.usb.accessory \
+    LatinIme
+
+# for android_filesystem_config.h
+PRODUCT_PACKAGES += \
+    fs_config_files
 
 # WiFi
 PRODUCT_PACKAGES += \
-    dhcpcd.conf \
     hostapd \
     libwcnss_qmi \
     libwpa_client \

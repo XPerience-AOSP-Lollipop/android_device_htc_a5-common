@@ -1,5 +1,4 @@
 # Copyright (C) 2014 The CyanogenMod Project
-# Copyright (C) 2016 The XPerience Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -47,12 +46,10 @@ BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom user_debug=31 ehc
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
-BOARD_KERNEL_PREBUILT_DT := true
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02008000 --tags_offset 0x01e00000 --dt device/htc/a5-common/dt.img
-#TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
-#TARGET_KERNEL_SOURCE := kernel/htc/msm8974
-#TARGET_KERNEL_CONFIG := cm_a5_defconfig
-TARGET_PREBUILT_KERNEL=device/htc/a5ul/zImage
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02008000 --tags_offset 0x01e00000
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
+TARGET_KERNEL_SOURCE := kernel/htc/msm8974
+TARGET_KERNEL_CONFIG := cm_a5_defconfig
 
 # Enable dex-preoptimization to speed up first boot sequence
 ifeq ($(HOST_OS),linux)
@@ -78,8 +75,13 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Camera
 TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY := libcamera_parameters_ext
-COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{"htc.camera.sensor.", AID_CAMERA, 0}, {"camera.4k2k.", AID_MEDIA, 0},'
+BOARD_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{"htc.camera.sensor.", AID_CAMERA, 0}, {"camera.4k2k.", AID_MEDIA, 0},'
+TARGET_USE_COMPAT_GRALLOC_ALIGN := true
 USE_DEVICE_SPECIFIC_CAMERA := true
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+TARGET_NEEDS_METADATA_CAMERA_SOURCE := true
+TARGET_USES_MEDIA_EXTENSIONS := true
+TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
 # Charge mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
@@ -110,9 +112,6 @@ TARGET_NO_RPC := true
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
-
-# NFC 
-BOARD_NFC_CHIPSET := pn544
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
@@ -148,6 +147,20 @@ TARGET_RECOVERY_DEVICE_DIRS += device/htc/a5-common
 TARGET_RECOVERY_DEVICE_MODULES += chargeled
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
+# Sensors
+BOARD_GLOBAL_CFLAGS += -DCOMPAT_SENSORS_M
+TARGET_NO_SENSOR_PERMISSION_CHECK := true
+
+# Graphics
+TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
+
+# RIL
+TARGET_RIL_VARIANT := 
+#mickybart - merged
+
+# SecComp
+BOARD_SECCOMP_POLICY := device/htc/a5-common/seccomp
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/htc/a5-common/sepolicy
@@ -155,8 +168,8 @@ BOARD_SEPOLICY_DIRS += device/htc/a5-common/sepolicy
 # Hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS += \
-device/htc/a5-common/cmhw \
-hardware/cyanogen/cmhw
+    device/htc/a5-common/cmhw \
+    hardware/cyanogen/cmhw
 
 # inherit from the proprietary version
 -include vendor/htc/a5-common/BoardConfigVendor.mk
