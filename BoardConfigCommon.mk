@@ -47,13 +47,18 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02008000 --tags_offset 0x01e00000
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-5.3/bin
+TARGET_TOOLCHAIN_ROOT := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-5.3/bin
 TARGET_KERNEL_SOURCE := kernel/htc/msm8974
 TARGET_KERNEL_CONFIG := cm_a5_defconfig
 
 # Enable dex-preoptimization to speed up first boot sequence
 ifeq ($(HOST_OS),linux)
+ifneq (eng,$(TARGET_BUILD_VARIANT))
 WITH_DEXPREOPT := true
 DONT_DEXPREOPT_PREBUILTS := true
+endif
 endif
 
 # QCOM hardware
@@ -146,6 +151,9 @@ TARGET_RECOVERY_DEVICE_DIRS += device/htc/a5-common
 TARGET_RECOVERY_DEVICE_MODULES += chargeled
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
+# Filesystem
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+
 # Sensors
 BOARD_GLOBAL_CFLAGS += -DCOMPAT_SENSORS_M
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
@@ -154,8 +162,8 @@ TARGET_NO_SENSOR_PERMISSION_CHECK := true
 TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
 
 # RIL
-TARGET_RIL_VARIANT := 
-#mickybart - merged
+TARGET_RIL_VARIANT := caf
+TARGET_NEEDS_GCC_LIBC := true
 
 # SecComp
 BOARD_SECCOMP_POLICY := device/htc/a5-common/seccomp
@@ -169,6 +177,12 @@ BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS += \
     device/htc/a5-common/cmhw \
     hardware/cyanogen/cmhw
+
+#TWRP
+TW_THEME := portrait_hdpi
+
+# SDClang
+TARGET_USE_SDCLANG := true
 
 # inherit from the proprietary version
 -include vendor/htc/a5-common/BoardConfigVendor.mk

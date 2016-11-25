@@ -50,6 +50,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qcom.bt.bluedroid.sh \
     init.qcom.bt.sh \
+    init.qcom.ril.sh
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -111,9 +112,10 @@ PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni
 
-# HTC logging symbols
+# HTC logging symbols, camera shim
 PRODUCT_PACKAGES += \
-    libshim_log
+    libshim_log \
+    libshim_camera
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -199,8 +201,7 @@ PRODUCT_COPY_FILES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory \
-    LatinIme
+    com.android.future.usb.accessory
 
 # for android_filesystem_config.h
 PRODUCT_PACKAGES += \
