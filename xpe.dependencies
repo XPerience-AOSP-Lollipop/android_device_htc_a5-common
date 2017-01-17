@@ -10,5 +10,10 @@
   {
     "repository": "android_external_stlport",
     "target_path": "external/stlport"
+  },{
+    "repository": "bigsuperprojects/proprietary_vendor_htc",
+	"target_path": "vendor/htc",
+	"remote": "github",
+	"revision": "lineage-14.1"
   }
 ]
