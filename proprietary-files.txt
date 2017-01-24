@@ -1,1 +1,5 @@
 # Device-specific proprietary files sharing a common name
+
+#Display
+vendor/lib/libuiblur.so
+
