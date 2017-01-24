@@ -60,7 +60,6 @@ endif
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
-
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
@@ -90,6 +89,7 @@ BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
 # FM Radio
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
+BOARD_HAVE_QCOM_FM := true
 
 # Graphics
 TARGET_USES_ION := true
