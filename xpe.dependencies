@@ -15,6 +15,6 @@
     "remote": "Unicorn",
     "repository": "proprietary_vendor_htc",
     "target_path": "vendor/htc",
-    "revision": "xpe-11.1"
+    "branch":      "xpe-11.1"
   }
 ]
