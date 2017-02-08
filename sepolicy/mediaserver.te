@@ -1,4 +1,5 @@
-#allow mediaserver debugfs:file r_file_perms;
+#============= mediaserver ==============
+allow mediaserver debugfs:file { getattr open read };
 allow mediaserver system_server:unix_stream_socket { read write };
 allow mediaserver time_helper_device:chr_file rw_file_perms;
 allow mediaserver firmware_file:dir search;

@@ -1,1 +1,4 @@
+#============= system_server ==============
+allow system_server dex2oat_exec:file { execute execute_no_trans getattr open read };
+allow system_server time_daemon:unix_stream_socket connectto;
 allow system_server vibe_dev:file rw_file_perms;
